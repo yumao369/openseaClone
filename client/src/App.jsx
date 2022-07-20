@@ -1,4 +1,4 @@
-import { Navbar, Service, Footer, Market, Create, Mine, Mylisted } from "../components"
+import { Navbar, Service, Footer, Market, Create, Mine, Mylisted, Resell } from "../components"
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
@@ -14,6 +14,7 @@ const App = () => {
           <Route path="/create" element={<Create />} />
           <Route path="/mine" element={<Mine />} />
           <Route path="/mylisted" element={<Mylisted />} />
+          <Route path="/resell" element={<Resell />} />
         </Routes>
       </div>
     </BrowserRouter>

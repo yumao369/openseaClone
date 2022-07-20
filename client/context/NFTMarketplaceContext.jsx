@@ -12,9 +12,11 @@ const getEhereumContract = () => {
   const NFTMarketplaceContract = new ethers.Contract(NFTMarketplaceAddress, NFTMarketplaceABI, signer)
 
   console.log({ provider, signer, NFTMarketplaceContract })
+  return NFTMarketplaceContract
 }
 
 export const NFTMarketplaceProvider = ({ children }) => {
+  const NFTMarketplaceContract = getEhereumContract()
 
   const [currentAccount, setCurrentAccount] = useState()
 
@@ -58,7 +60,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   }, [])
 
   return (
-    <NFTMarketplaceContext.Provider value={{ connectWallet, currentAccount }}>
+    <NFTMarketplaceContext.Provider value={{ connectWallet, currentAccount, NFTMarketplaceContract }}>
       {children}
     </NFTMarketplaceContext.Provider>
   )
