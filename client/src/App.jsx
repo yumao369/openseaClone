@@ -1,27 +1,22 @@
-//import { Navbar, Welcome, Service, Footer } from "../components"
-import Welcome from "../components/Welcome";
-import Service from "../components/Service";
-import Footer from "../components/Footer";
-import Navbar from "../components/Navbar";
-import { BrowserRouter as Router, Route, Redirect, useHistory, Link } from "react-router-dom";
+import { Navbar, Service, Footer, Market, Create, Mine, Mylisted } from "../components"
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
 
   return (
-    <Router>
+    <BrowserRouter>
       <div >
         <Navbar />
-        <Route
-          exact
-          path="/"
-          render={() => <Redirect to="/market" />}
-        ></Route>
-        <Route exact path="/market" component={Welcome} />
-        <Route exact path="/sell" component={Service} />
-        <Route exact path="/mine" component={Footer} />
-        <Route exact path="/myListed" component={Footer} />
+
+        <Routes>
+          <Route path="/" element={<Market />} />
+          <Route path="/market" element={<Market />} />
+          <Route path="/create" element={<Create />} />
+          <Route path="/mine" element={<Mine />} />
+          <Route path="/mylisted" element={<Mylisted />} />
+        </Routes>
       </div>
-    </Router>
+    </BrowserRouter>
   )
 }
 
