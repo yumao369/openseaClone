@@ -16,6 +16,7 @@ const Market = () => {
 
   const loadNFTs = async () => {
     const data = await NFTMarketplaceContract.fetchMarketItems()
+    console.log(data)
     const items = await Promise.all(data.map(async (nft) => {
       const tokenUri = await NFTMarketplaceContract.tokenURI(nft.tokenId)
       const res = await axios.get(tokenUri)

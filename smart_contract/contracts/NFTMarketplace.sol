@@ -7,6 +7,16 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 import "hardhat/console.sol";
 
+//msg.value:The amount of wei sent with a message to a contract
+//you can think of it as a fee to operate a function, which is 
+//different from gas,the fee will transfer token from operator
+//to contract.
+//For example, in this case, if you want to list an nft for sale,
+//you need to transfer a fee which is listingprice to the contract,
+//and once your nft is sold,the fee will be transfered from the contract 
+//to the owner of the contract.So the owner of the contract can make
+//profit through the trade of nft.
+
 contract NFTMarketplace is ERC721URIStorage {
     using Counters for Counters.Counter;
     Counters.Counter private _tokenIds;
@@ -33,7 +43,7 @@ contract NFTMarketplace is ERC721URIStorage {
       bool sold
     );
 
-    constructor() ERC721("Metaverse Tokens", "METT") {
+    constructor() ERC721("OpenSea Tokens", "OETH") {
       owner = payable(msg.sender);
     }
 
@@ -110,6 +120,7 @@ contract NFTMarketplace is ERC721URIStorage {
       idToMarketItem[tokenId].seller = payable(address(0));
       _itemsSold.increment();
       _transfer(address(this), msg.sender, tokenId);
+      //合约将listingprice转给合约所有者，将msg.value也就是price转给售卖者
       payable(owner).transfer(listingPrice);
       payable(seller).transfer(msg.value);
     }
