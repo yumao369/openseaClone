@@ -1,4 +1,4 @@
-import { ethers } from "ethers";
+import { ethers, BigNumber } from "ethers";
 
 const FormattedValue = (props) => {
 
@@ -20,7 +20,7 @@ const FormattedValue = (props) => {
         return (
           <div>
             {
-              ethers.utils.formatEther(props.value)
+              props.value.toString()
             }
           </div>
         )

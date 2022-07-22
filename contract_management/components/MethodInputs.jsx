@@ -9,7 +9,7 @@ const MethodInputs = (props) => {
   }, [])
 
   const formatInputs = () => {
-    console.log(props.inputs)
+    console.log('props.inputs', props.inputs)
     const formattedInputs = props.inputs.map((input, index) => (
       input.name === '' ? Object.assign({}, input, { name: `Input#${index}` }) : input
     ))
@@ -19,7 +19,6 @@ const MethodInputs = (props) => {
 
   const handleSubmit = (value) => {
     if (props.onClick) {
-      //console.log(Object.values(value))
       props.onClick(Object.values(value))
     }
   }

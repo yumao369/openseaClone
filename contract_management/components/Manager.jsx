@@ -92,7 +92,7 @@ const TabPane = Tabs.TabPane;
 const Manager = () => {
   return (
     <div className="w-4/5">
-      <Tabs defaultActiveKey="send">
+      <Tabs defaultActiveKey="event">
         <TabPane tab="Properties" key="properties">
           <Properties />
         </TabPane>

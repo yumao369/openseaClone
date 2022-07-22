@@ -60,7 +60,8 @@ const Send = () => {
   const sendHash = async (methodName, methodParams) => {
     const transcation = await NFTMarketplaceContract[methodName](...methodParams)
     await transcation.wait()
-    return transcation
+    console.log(transcation)
+    return transcation.hash
   }
 
   return (
